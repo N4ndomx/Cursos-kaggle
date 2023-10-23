@@ -29,6 +29,7 @@ forest_model = RandomForestRegressor(random_state=1)
 forest_model.fit(train_X, train_y)
 melb_preds = forest_model.predict(val_X)
 print(mean_absolute_error(val_y, melb_preds))
+
 """
 Conclusion
 There is likely room for further improvement, but this is a big improvement over the best decision tree error of 250,000.

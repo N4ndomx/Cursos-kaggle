@@ -36,19 +36,20 @@ for max_leaf_nodes in [5, 50, 500, 5000]:
 #Overfitting: capturing spurious patterns that won't recur in the future, leading to less accurate predictions, or
 #Underfitting: failing to capture relevant patterns, again leading to less accurate predictions.
 
+#-------------------------------------------------
 
 #candidate_max_leaf_nodes = [5, 25, 50, 100, 250, 500]
 # Write loop to find the ideal tree size from candidate_max_leaf_nodes
 # for max_leaf_nodes in candidate_max_leaf_nodes:
 #     my_mae = get_mae(max_leaf_nodes, train_X, val_X, train_y, val_y)
 #     print("Max leaf nodes: %d  \t\t Mean Absolute Error:  %d" %(max_leaf_nodes, my_mae))
-​
+
 scores = {leaf_size: get_mae(leaf_size, train_X, val_X, train_y, val_y) for leaf_size in candidate_max_leaf_nodes}
 best_tree_size = min(scores, key=scores.get)
 # Store the best value of max_leaf_nodes (it will be either 5, 25, 50, 100, 250 or 500)
 #You know the best tree size. If you were going to deploy this model in practice, you would make it even more accurate by using all of the data and keeping that tree size. That is, you don't need to hold out the validation data now that you've made all your modeling decisions.
 
-​#Fill in argument to make optimal size and uncomment
+#Fill in argument to make optimal size and uncomment
 final_model = DecisionTreeRegressor(max_leaf_nodes=best_tree_size,random_state=0)
 
 # fit the final model and uncomment the next two lines
